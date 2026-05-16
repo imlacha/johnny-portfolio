@@ -248,30 +248,48 @@ const App = () => {
 
               <div className="w-[280px] md:w-[400px] p-8 md:p-10 bg-white border border-brand-100 rounded-[2.5rem] md:rounded-[3rem] flex-shrink-0 flex flex-col justify-between hover:shadow-xl transition-all hover:-translate-y-1">
                 <div>
-                  <div className="flex justify-between items-start mb-8 md:mb-10">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-brand-50 rounded-xl md:rounded-2xl flex items-center justify-center mb-10 border border-brand-100">
+                  <div className="flex justify-between items-start mb-6 md:mb-8">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-brand-50 rounded-xl md:rounded-2xl flex items-center justify-center border border-brand-100">
                       <i className="fas fa-microchip text-brand-950"></i>
                     </div>
+                    <span className="text-[8px] font-bold border border-brand-200 text-brand-400 px-2 py-1 rounded-full">Jul 2024 – Apr 2025</span>
                   </div>
-                  <h4 className="text-brand-400 text-[10px] font-bold uppercase tracking-widest mb-2">DELL</h4>
-                  <h5 className="text-lg md:text-2xl font-bold text-brand-950 mb-4 md:mb-6">GenAI 硬體測試系統</h5>
-                  <p className="text-brand-600 text-xs md:text-sm font-light leading-relaxed">整合 Whisper 與 TTS 技術，實現擬人化自動硬體功能驗證。</p>
+                  <h4 className="text-brand-400 text-[10px] font-bold uppercase tracking-widest mb-1">DELL | Taipei, Taiwan</h4>
+                  <h5 className="text-lg md:text-xl font-bold text-brand-950 mb-4">GenAI 硬體自動化測試系統</h5>
+                  <ul className="space-y-2.5 mb-4">
+                    <li className="text-brand-600 text-xs font-light leading-relaxed pl-3 border-l-2 border-brand-200"><span className="font-semibold text-brand-950">分散式對話系統：</span>整合 TTS 與自訂義角色，使裝置能在多輪對話中動態切換角色，實現自動化語音互動測試。</li>
+                    <li className="text-brand-600 text-xs font-light leading-relaxed pl-3 border-l-2 border-brand-200"><span className="font-semibold text-brand-950">準確率驗證：</span>導入 Whisper 模型轉錄錄音，透過關鍵字匹配演算法自動驗證測試結果。</li>
+                  </ul>
+                  <div className="flex flex-wrap gap-1.5">
+                    {['Python', 'PyQt5', 'Whisper', 'TTS'].map(t => (
+                      <span key={t} className="px-2 py-0.5 bg-brand-50 text-brand-600 text-[9px] font-bold rounded-full border border-brand-100 uppercase tracking-wider">{t}</span>
+                    ))}
+                  </div>
                 </div>
-                <div className="pt-6 border-t border-brand-100 text-[8px] md:text-[9px] font-bold text-brand-400 uppercase">2024 - 2025</div>
+                <div className="pt-5 border-t border-brand-100 text-[8px] md:text-[9px] font-bold text-brand-400 uppercase">2024 - 2025</div>
               </div>
 
               <div className="w-[280px] md:w-[400px] p-8 md:p-10 bg-white border border-brand-100 rounded-[2.5rem] md:rounded-[3rem] flex-shrink-0 flex flex-col justify-between relative hover:shadow-xl transition-all hover:-translate-y-1">
                 <div>
-                  <div className="flex justify-between items-start mb-8 md:mb-10">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-brand-950 text-white rounded-xl md:rounded-2xl flex items-center justify-center mb-10">
+                  <div className="flex justify-between items-start mb-6 md:mb-8">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-brand-950 text-white rounded-xl md:rounded-2xl flex items-center justify-center">
                       <i className="fas fa-industry"></i>
                     </div>
+                    <span className="text-[8px] font-bold border border-brand-200 text-brand-400 px-2 py-1 rounded-full">Oct 2023 – Dec 2024</span>
                   </div>
-                  <h4 className="text-brand-400 text-[10px] font-bold uppercase tracking-widest mb-2">Foxlink</h4>
-                  <h5 className="text-lg md:text-2xl font-bold text-brand-950 mb-4 md:mb-6">預知保養系統</h5>
-                  <p className="text-brand-600 text-xs md:text-sm font-light leading-relaxed">提升 90% 的維護效率預測，建構全端視覺化平台。</p>
+                  <h4 className="text-brand-400 text-[10px] font-bold uppercase tracking-widest mb-1">Foxlink | Taipei, Taiwan</h4>
+                  <h5 className="text-lg md:text-xl font-bold text-brand-950 mb-4">預知保養系統</h5>
+                  <ul className="space-y-2.5 mb-4">
+                    <li className="text-brand-600 text-xs font-light leading-relaxed pl-3 border-l-2 border-brand-200"><span className="font-semibold text-brand-950">預測性維護：</span>結合 Ensemble Learning 預測耗材最佳更換時機，成功提升 90% 維護效率。</li>
+                    <li className="text-brand-600 text-xs font-light leading-relaxed pl-3 border-l-2 border-brand-200"><span className="font-semibold text-brand-950">全端視覺化平台：</span>以 FastAPI + React.js 建構系統，優化操作人員工作流程與 UX。</li>
+                  </ul>
+                  <div className="flex flex-wrap gap-1.5">
+                    {['React.js', 'FastAPI', 'JavaScript', 'CSS'].map(t => (
+                      <span key={t} className="px-2 py-0.5 bg-brand-50 text-brand-600 text-[9px] font-bold rounded-full border border-brand-100 uppercase tracking-wider">{t}</span>
+                    ))}
+                  </div>
                 </div>
-                <div className="pt-6 border-t border-brand-100 flex justify-between items-center text-[8px] md:text-[9px] font-bold text-brand-400">
+                <div className="pt-5 border-t border-brand-100 flex justify-between items-center text-[8px] md:text-[9px] font-bold text-brand-400">
                   <span>2023 - 2024</span>
                   <a href="https://github.com/imlacha/foxlink-second.git" target="_blank" className="hover:text-brand-950"><i className="fab fa-github text-lg"></i></a>
                 </div>
