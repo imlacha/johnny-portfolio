@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import ragImage from './assets/pii_rag_workflow.png';
+import qrImage from './assets/qr_shortener_mockup.png';
 
 const App = () => {
   const [copied, setCopied] = useState(false);
@@ -291,7 +293,7 @@ const App = () => {
           {/* Project 1: RAG */}
           <div className="group bg-brand-950 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row items-center shadow-xl relative max-w-5xl mx-auto border border-white/5 reveal-up">
             <div className="w-full lg:w-[40%] h-[200px] md:h-[250px] lg:h-auto self-stretch lg:self-center bg-brand-900/30 flex items-center justify-center overflow-hidden">
-              <img src="asset/pii_rag_workflow.png" className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105 p-4" />
+              <img src={ragImage} className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105 p-4" />
             </div>
             <div className="w-full lg:w-[60%] p-8 md:p-10 lg:p-12 text-white relative z-10">
               <div className="inline-block px-3 py-0.5 mb-4 text-[9px] font-bold tracking-[0.2em] text-brand-400 uppercase border border-brand-800 rounded-full">
@@ -320,7 +322,7 @@ const App = () => {
           {/* Project 2: QR Code System - Unified Layout with Project 1 */}
           <div className="group bg-white rounded-[2.5rem] md:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row items-center shadow-xl relative max-w-5xl mx-auto border border-brand-100 mt-12 md:mt-16 reveal-up delay-200">
             <div className="w-full lg:w-[40%] h-[200px] md:h-[250px] lg:h-auto self-stretch lg:self-center bg-brand-50 flex items-center justify-center overflow-hidden">
-              <img src="asset/qr_shortener_mockup.png" className="w-full h-full object-contain group-hover:scale-105 transition-all duration-1000 p-4" />
+              <img src={qrImage} className="w-full h-full object-contain group-hover:scale-105 transition-all duration-1000 p-4" />
             </div>
             
             <div className="w-full lg:w-[60%] p-8 md:p-10 lg:p-12 text-brand-950 relative z-10">
