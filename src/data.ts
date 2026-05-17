@@ -2,6 +2,8 @@
 // data.ts — All static content lives here.
 // Update this file to change portfolio content.
 // ─────────────────────────────────────────────
+import ragImage from './assets/pii_rag_workflow.png';
+import qrImage from './assets/qr_shortener_mockup.png';
 
 export const NAV_ITEMS = [
   { id: 'about',     label: '關於' },
@@ -83,6 +85,29 @@ export interface ProjectItem {
   desc:    string;
   tags:    string[];
   github:  string;
-  image:   string;   // imported asset path passed in from App.tsx
+  image:   string;   // imported asset — add new imports at the top of this file
   delay?:  boolean;
 }
+
+export const PROJECTS: ProjectItem[] = [
+  {
+    dark:   true,
+    label:  'AI Security Architecture',
+    title:  '雙流隱私保護 RAG 系統',
+    desc:   '透過「去識別化中介層」實現「零真實個資」的外部 LLM 檢索，確保企業級資料安全性。',
+    tags:   ['Python', 'Langchain', 'Redis', 'PostgreSQL', 'Docker'],
+    github: 'https://github.com/imlacha/PII-Mocking-RAG/',
+    image:  ragImage,
+    delay:  false,
+  },
+  {
+    dark:   false,
+    label:  'Backend Infrastructure',
+    title:  'QR Code 縮網址系統',
+    desc:   '基於 FastAPI 的高效能縮網址與動態 QR Code 生成系統，支援點擊分析與 Docker 快速部署。',
+    tags:   ['FastAPI', 'Redis', 'PostgreSQL', 'Docker', 'Segno'],
+    github: 'https://github.com/imlacha/qrcode-sys',
+    image:  qrImage,
+    delay:  true,
+  },
+];
