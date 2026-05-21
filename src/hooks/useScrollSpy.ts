@@ -47,7 +47,15 @@ export function useScrollSpy() {
         }),
       { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
     );
-    document.querySelectorAll('.reveal-up').forEach(el => reveal.observe(el));
+
+    // Observe existing + future reveal-up nodes (handles language switch re-renders)
+    const observeAll = () =>
+      document.querySelectorAll('.reveal-up:not(.reveal-active)').forEach(el => reveal.observe(el));
+
+    observeAll();
+
+    const mutation = new MutationObserver(observeAll);
+    mutation.observe(document.body, { childList: true, subtree: true });
 
     handleScroll(); // set correct state on mount
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -55,8 +63,10 @@ export function useScrollSpy() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       reveal.disconnect();
+      mutation.disconnect();
     };
   }, []);
 
   return activeSection;
 }
+

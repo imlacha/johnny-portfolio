@@ -157,3 +157,13 @@
 .animate-bounce-slow {
   animation: bounce-slow 2s infinite ease-in-out;
 }
+
+/* Project card — always visible, fades in on mount */
+@keyframes card-fade-in {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-fade-in {
+  animation: card-fade-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}

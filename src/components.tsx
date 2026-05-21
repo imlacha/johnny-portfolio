@@ -57,7 +57,7 @@ export const WorkCard = ({ item }: { item: WorkItem }) => {
       <div className={`mt-auto pt-5 border-t flex justify-between items-center h-[44px] text-[8px] md:text-[9px] font-bold uppercase ${item.dark ? 'border-white/10 text-brand-500' : 'border-brand-100 text-brand-400'}`}>
         <span>{item.period}</span>
         {item.github && (
-          <a href={item.github} target="_blank" className={`hover:${item.dark ? 'text-white' : 'text-brand-950'} text-lg`}>
+          <a href={item.github} target="_blank" className={`hover:text-brand-950 text-lg transition-colors`}>
             <i className="fab fa-github"></i>
           </a>
         )}
@@ -67,30 +67,36 @@ export const WorkCard = ({ item }: { item: WorkItem }) => {
 };
 
 // ── Project Card ───────────────────────────────
-export const ProjectCard = ({ project }: { project: ProjectItem }) => {
-  const wrapper = `group rounded-[2.5rem] md:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row items-center shadow-xl relative max-w-5xl mx-auto reveal-up ${project.delay ? 'delay-200 mt-12 md:mt-16' : ''} ${project.dark ? 'bg-brand-950 border border-white/5' : 'bg-white border border-brand-100'}`;
+export const ProjectCard = ({ project, index = 0 }: { project: ProjectItem; index?: number }) => {
+  const wrapper = `group rounded-[2.5rem] md:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row items-stretch shadow-xl relative max-w-5xl mx-auto card-fade-in ${project.delay ? 'mt-12 md:mt-16' : ''} ${project.dark ? 'bg-brand-950 border border-white/5' : 'bg-white border border-brand-100'}`;
   const tagClass = project.dark
     ? 'px-2 py-0.5 bg-white/5 text-brand-200 text-[9px] font-bold rounded-full border border-white/10 uppercase tracking-widest'
     : 'px-2 py-0.5 bg-brand-100 text-brand-800 text-[9px] font-bold rounded-full uppercase tracking-widest';
 
   return (
-    <div className={wrapper}>
-      <div className={`w-full lg:w-[40%] h-[200px] md:h-[250px] lg:h-auto self-stretch lg:self-center flex items-center justify-center overflow-hidden ${project.dark ? 'bg-brand-900/30' : 'bg-brand-50'}`}>
-        <img src={project.image} className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105 p-4" alt={project.title} />
+    <div className={wrapper} style={{ animationDelay: `${index * 120}ms` }}>
+      {/* Image Panel */}
+      <div className={`w-full lg:w-[42%] min-h-[200px] md:min-h-[260px] flex items-center justify-center overflow-hidden flex-shrink-0 ${project.dark ? 'bg-brand-900/40' : 'bg-brand-50'}`}>
+        <img
+          src={project.image}
+          className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105 p-6 md:p-8"
+          alt={project.title}
+        />
       </div>
 
-      <div className={`w-full lg:w-[60%] p-8 md:p-10 lg:p-12 relative z-10 ${project.dark ? 'text-white' : 'text-brand-950'}`}>
-        <div className={`inline-block px-3 py-0.5 mb-4 text-[9px] font-bold tracking-[0.2em] uppercase rounded-full ${project.dark ? 'text-brand-400 border border-brand-800' : 'text-brand-500 border border-brand-200'}`}>
+      {/* Content Panel */}
+      <div className={`w-full lg:w-[58%] p-8 md:p-10 lg:p-12 flex flex-col justify-center ${project.dark ? 'text-white' : 'text-brand-950'}`}>
+        <div className={`inline-block self-start px-3 py-1 mb-5 text-[9px] font-bold tracking-[0.2em] uppercase rounded-full ${project.dark ? 'text-brand-400 border border-brand-800' : 'text-brand-500 border border-brand-200'}`}>
           {project.label}
         </div>
-        <h4 className="text-2xl font-bold mb-3">{project.title}</h4>
+        <h4 className="text-2xl md:text-3xl font-bold mb-3 leading-snug">{project.title}</h4>
         <p className={`text-sm font-light leading-relaxed mb-6 ${project.dark ? 'text-brand-300' : 'text-brand-600'}`}>{project.desc}</p>
 
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-8">
           {project.tags.map(tag => <span key={tag} className={tagClass}>{tag}</span>)}
         </div>
 
-        <a href={project.github} target="_blank" className={`inline-flex items-center gap-2 font-bold group/link text-xs ${project.dark ? 'text-white' : 'text-brand-950'}`}>
+        <a href={project.github} target="_blank" rel="noreferrer" className={`inline-flex items-center gap-2 font-bold group/link text-xs self-start ${project.dark ? 'text-white' : 'text-brand-950'}`}>
           <span className={`border-b pb-0.5 transition-all uppercase tracking-widest text-[9px] ${project.dark ? 'border-white/20 group-hover/link:border-white' : 'border-brand-200 group-hover/link:border-brand-950'}`}>VIEW ON GITHUB</span>
           <i className="fab fa-github text-lg"></i>
         </a>
