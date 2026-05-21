@@ -20,9 +20,9 @@ export const AboutSection = () => {
               <div className="relative pl-8 space-y-12 before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[2px] before:bg-brand-100">
                 <div className="relative">
                   <div className="absolute -left-[37px] top-1.5 w-4 h-4 bg-white border-4 border-brand-950 rounded-full z-10"></div>
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2 gap-1">
-                    <h4 className="text-xl md:text-2xl font-bold text-brand-950">{t.edu.school1.name}</h4>
-                    <span className="text-[10px] md:text-xs font-bold text-brand-500 uppercase tracking-wider">{t.edu.school1.period}</span>
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h4 className="text-xl md:text-2xl font-bold text-brand-950 leading-snug min-w-0">{t.edu.school1.name}</h4>
+                    <span className="text-[10px] md:text-xs font-bold text-brand-500 uppercase tracking-wider whitespace-nowrap flex-shrink-0 mt-1.5">{t.edu.school1.period}</span>
                   </div>
                   <p className="text-sm md:text-brand-600 font-medium mb-4">{t.edu.school1.dept}</p>
                   <div className="p-4 md:p-5 bg-brand-50 rounded-2xl border border-brand-100 hover:shadow-lg transition-shadow">
@@ -37,9 +37,9 @@ export const AboutSection = () => {
                 </div>
                 <div className="relative">
                   <div className="absolute -left-[37px] top-1.5 w-4 h-4 bg-white border-4 border-brand-200 rounded-full z-10"></div>
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2 gap-1">
-                    <h4 className="text-lg md:text-xl font-bold text-brand-950">{t.edu.school2.name}</h4>
-                    <span className="text-[10px] md:text-xs font-bold text-brand-400 uppercase tracking-wider">{t.edu.school2.period}</span>
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h4 className="text-lg md:text-xl font-bold text-brand-950 leading-snug min-w-0">{t.edu.school2.name}</h4>
+                    <span className="text-[10px] md:text-xs font-bold text-brand-400 uppercase tracking-wider whitespace-nowrap flex-shrink-0 mt-1.5">{t.edu.school2.period}</span>
                   </div>
                   <p className="text-sm md:text-brand-600 font-medium">{t.edu.school2.dept}</p>
                 </div>
