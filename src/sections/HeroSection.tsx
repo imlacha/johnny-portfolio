@@ -10,8 +10,8 @@ export const HeroSection = () => (
       </span>
       <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-none">
         <span>陳世宗</span><br />
-        <span className="text-brand-600">一個對 AI 有研究熱忱</span>
-        <span className="block text-brand-600">的工程師</span>
+        <span className="text-brand-600">專注在研發</span>
+        <span className="block text-brand-600">AI自動化流程的工程師</span>
       </h1>
       <p className="max-w-xl mx-auto text-base md:text-lg text-brand-600 font-light mb-10 md:mb-14 px-4">
         專精於將大型語言模型（LLM）轉化為實際解決解決方案，扮演連結「AI應用」與「企業實務」的橋樑。
