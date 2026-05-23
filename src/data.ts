@@ -227,7 +227,7 @@ export const PROJECTS: Record<'zh' | 'en', ProjectItem[]> = {
       dark: false,
       label: 'Datasheet Extractor',
       title: '電子元件規格 Datasheet 萃取系統',
-      desc: '基於 LangGraph 狀態機與 MCP 微服務架構，結合多模態視覺與雙代理（Dual-Agent）自適應校正，精準解析複雜晶片圖紙與電氣表格，準確率達 97%。',
+      desc: '基於 LangGraph 狀態機與 MCP 微服務架構，結合多模態視覺與雙代理（Dual-Agent）自適應校正，精準解析複雜晶片圖紙與電氣表格，準確率達 95-97%。',
       tags: ['LLM', 'LangGraph', 'MCP', 'FastAPI', 'Python', 'Pydantic'],
       github: 'https://github.com/imlacha/spec-sheet-extract/tree/main',
       image: datasheetImage,
