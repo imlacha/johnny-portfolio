@@ -259,7 +259,7 @@ export const PROJECTS: Record<'zh' | 'en', ProjectItem[]> = {
       dark: false,
       label: 'Datasheet Extractor',
       title: 'Electronic Component Datasheet Extraction System',
-      desc: 'An enterprise-grade parser built on LangGraph StateGraph and MCP microservices, leveraging multimodal vision and a dual-agent self-correction mechanism to extract component specs with 97% accuracy.',
+      desc: 'An enterprise-grade parser built on LangGraph StateGraph and MCP microservices, leveraging multimodal vision and a dual-agent self-correction mechanism to extract component specs with 95-97% accuracy.',
       tags: ['LLM-Based', 'LangGraph', 'MCP', 'FastAPI', 'Python'],
       github: 'https://github.com/imlacha/spec-sheet-extract/tree/main',
       image: datasheetImage,
