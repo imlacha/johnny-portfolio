@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────
 import { useEffect, useState } from 'react';
 
-const SECTION_IDS = ['home', 'about', 'services', 'portfolio', 'contact'];
+const SECTION_IDS = ['home', 'about', 'services', 'portfolio', 'papers', 'contact'];
 
 export function useScrollSpy() {
   const [activeSection, setActiveSection] = useState('home');

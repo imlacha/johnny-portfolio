@@ -5,6 +5,7 @@
 import ragImage from './assets/pii_rag_workflow.png';
 import qrImage from './assets/qr_shortener_mockup.png';
 import datasheetImage from './assets/Dataextract.png';
+import anovaAgentImage from '../asset/anova_agent.png';
 
 // ── Nav ────────────────────────────────────────
 export const NAV_ITEMS = {
@@ -12,12 +13,14 @@ export const NAV_ITEMS = {
     { id: 'about', label: '關於' },
     { id: 'services', label: '經歷' },
     { id: 'portfolio', label: '作品' },
+    { id: 'papers', label: '論文' },
     { id: 'contact', label: '聯絡' },
   ],
   en: [
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Experience' },
     { id: 'portfolio', label: 'Work' },
+    { id: 'papers', label: 'Papers' },
     { id: 'contact', label: 'Contact' },
   ],
 };
@@ -279,3 +282,40 @@ export const PORTFOLIO_CONTENT = {
   zh: { eyebrow: 'Selected Works', title: '專案作品集' },
   en: { eyebrow: 'Selected Works', title: 'Portfolio' },
 };
+
+// ── Papers Section ─────────────────────────────
+export interface PaperItem {
+  title: string;
+  conference: string;
+  year: string;
+  author: string;
+  abstract: string;
+  arxivUrl: string;
+  image?: string;
+}
+
+export const PAPERS: Record<'zh' | 'en', PaperItem[]> = {
+  zh: [
+    {
+      title: '基於 SLM 小型語言模型 Agent 機制之 ANOVA 統計推論架構與探索',
+      conference: '國立臺灣科技大學碩士學位論文',
+      year: '2025',
+      author: '陳世宗',
+      abstract: '隨著大型語言模型（Large Language Models, LLMs）於各領域的蓬勃發展，其在自然語言處理、數學與統計推論等專業任務中展現高度潛力。然而，LLM 的龐大運算資源需求與部署成本，對一般企業與研究者造成不小挑戰。為此，本研究聚焦於小型語言模型（Small Language Models, SLMs），結合代理（Agent）與思維練（Chain-of-Thought, CoT）推理機制，設計一套具備自動化推論與反思能力的 ANOVA 統計推論架構。研究方法包括建立以 SLM 為核心的多代理工作流程，涵蓋假設設定、統計分析、結論生成三大模組，並導入反思提示詞提升推論準確率。實驗以自行收集與生成式 AI 合成之 One-Way ANOVA 資料共 50 筆為測試基礎，系統性比較多種 SLM（Phi-4、Qwen2.5 Coder、Qwen3、DeepseekR1）於不同提示策略下的表現。結果顯示，推理型 SLM 配合結構化提示與反思機制，在複雜題型下能顯著提升正確率；而非推理模型則對提示設計敏感度較高，部分情境下反而以簡化提示表現最佳。本研究證明，整合 SLM、Agent 機制與反思流程，可有效促進統計推論流程自動化，並為專業領域知識應用提供高效、低資源消耗的新方案。',
+      arxivUrl: 'https://etheses.lib.ntust.edu.tw/detail/3aff4fc719d1e940099950cc8f0dae93/',
+      image: anovaAgentImage,
+    },
+  ],
+  en: [
+    {
+      title: 'Framework and Exploration of ANOVA Statistical Inference Based on the Agent Mechanism of Small Language Models (SLM)',
+      conference: 'NTUST Master Thesis',
+      year: '2025',
+      author: 'Shi-Zong Chen',
+      abstract: 'With the rapid development of Large Language Models (LLMs) across various fields, their potential in specialized tasks such as natural language processing, mathematics, and statistical inference has become increasingly apparent. However, the substantial computational resource requirements and deployment costs of LLMs present significant challenges for general enterprises and researchers. To address this, our research focuses on Small Language Models (SLMs), integrating Agent and Chain-of-Thought (CoT) reasoning mechanisms to design an ANOVA statistical inference framework capable of automated reasoning and self-correction. The study methodology involves establishing a multi-agent workflow centered on SLMs, encompassing hypothesis formulation, statistical analysis, and conclusion generation modules, while incorporating reflective prompting to enhance inference accuracy. Experiments were conducted using a dataset of 50 One-Way ANOVA samples, comprising self-collected data and data synthesized via generative AI, to systematically compare the performance of various SLMs (Phi-4, Qwen2.5 Coder, Qwen3, DeepseekR1) under different prompting strategies. Results indicate that reasoning-type SLMs, when paired with structured prompts and reflection mechanisms, achieve significant accuracy improvements on complex problems; conversely, non-reasoning models demonstrate higher sensitivity to prompt design, with simplified prompts sometimes yielding optimal performance in specific scenarios. This research demonstrates that the integration of SLMs, Agent mechanisms, and reflective processes can effectively automate statistical inference workflows, offering an efficient, low-resource alternative for applying domain-specific knowledge.',
+      arxivUrl: 'https://etheses.lib.ntust.edu.tw/detail/3aff4fc719d1e940099950cc8f0dae93/',
+      image: anovaAgentImage,
+    },
+  ],
+};
+

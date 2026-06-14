@@ -1,7 +1,9 @@
 // ─────────────────────────────────────────────
 // components.tsx — Reusable UI components.
 // ─────────────────────────────────────────────
-import type { WorkItem, ProjectItem } from './data';
+import { useEffect } from 'react';
+import { useLang } from './LangContext';
+import type { WorkItem, ProjectItem, PaperItem } from './data';
 
 // ── Work History Card ──────────────────────────
 export const WorkCard = ({ item }: { item: WorkItem }) => {
@@ -113,3 +115,191 @@ export const SectionHeader = ({ eyebrow, title, divider = false }: { eyebrow: st
     {divider && <div className="mt-4 w-12 h-1 bg-brand-950 mx-auto rounded-full opacity-20"></div>}
   </div>
 );
+
+// ── Paper Card ───────────────────────────────
+interface PaperCardProps {
+  paper: PaperItem;
+  onOpen: () => void;
+}
+
+export const PaperCard = ({ paper, onOpen }: PaperCardProps) => {
+  return (
+    <div className="group bg-white border border-brand-100 hover:border-brand-200 hover:shadow-xl rounded-[2rem] p-6 md:p-8 transition-all duration-500 flex items-center justify-between card-fade-in max-w-5xl mx-auto">
+      <div className="flex flex-col gap-4">
+        {/* Title */}
+        <h4 className="text-lg md:text-xl font-bold text-brand-950 group-hover:text-brand-800 transition-colors leading-snug">
+          {paper.title}
+        </h4>
+        
+        {/* Badges */}
+        <div className="flex flex-wrap gap-2">
+          <span className="px-3 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold uppercase tracking-wider rounded-full border border-brand-100">
+            {paper.conference}
+          </span>
+          <span className="px-3 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold uppercase tracking-wider rounded-full border border-brand-100">
+            {paper.year}
+          </span>
+          <span className="px-3 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold uppercase tracking-wider rounded-full border border-brand-100">
+            {paper.author}
+          </span>
+        </div>
+      </div>
+
+      {/* Button */}
+      <button
+        onClick={onOpen}
+        className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-950 text-white flex items-center justify-center transition-all duration-300 hover:bg-brand-800 hover:-translate-y-0.5 active:scale-95 shadow-md hover:shadow-lg ml-6 cursor-pointer"
+        aria-label="View paper details"
+      >
+        <i className="fas fa-paper-plane text-sm"></i>
+      </button>
+    </div>
+  );
+};
+
+// ── Paper Modal ──────────────────────────────
+interface PaperModalProps {
+  paper: PaperItem;
+  onClose: () => void;
+}
+
+export const PaperModal = ({ paper, onClose }: PaperModalProps) => {
+  const { lang } = useLang();
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
+  const labels = {
+    zh: {
+      arch: '架構 / 視覺化',
+      abstract: '摘要',
+    },
+    en: {
+      arch: 'Architecture / Visualization',
+      abstract: 'Abstract',
+    }
+  };
+  const t = labels[lang];
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div 
+        className="absolute inset-0 bg-brand-950/60 backdrop-blur-md transition-opacity duration-300"
+        onClick={onClose}
+      />
+
+      {/* Modal Container */}
+      <div className="relative w-full max-w-5xl bg-white rounded-[2.5rem] shadow-2xl flex flex-col max-h-[90vh] overflow-hidden z-10 animate-card-fade-in border border-brand-100">
+        
+        {/* Header */}
+        <div className="p-6 md:p-8 border-b border-brand-100 flex justify-between items-start">
+          <div className="pr-8">
+            <h3 className="text-xl md:text-2xl font-black text-brand-950 leading-snug">{paper.title}</h3>
+            <div className="flex flex-wrap gap-2 mt-3">
+              <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 bg-brand-50 border border-brand-200 rounded-full text-brand-600">{paper.conference}</span>
+              <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 bg-brand-50 border border-brand-200 rounded-full text-brand-600">{paper.year}</span>
+              <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 bg-brand-50 border border-brand-200 rounded-full text-brand-600">{paper.author}</span>
+            </div>
+          </div>
+
+          <button 
+            onClick={onClose}
+            className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full bg-brand-50 hover:bg-brand-100 text-brand-500 hover:text-brand-950 transition-all cursor-pointer"
+            aria-label="Close"
+          >
+            <i className="fas fa-times text-lg"></i>
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 md:p-8 overflow-y-auto flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 bg-brand-50/50">
+          
+          {/* Left: Architecture (Minimalist) */}
+          <div className="flex flex-col bg-white border border-brand-100 rounded-2xl p-6 min-h-[300px] justify-center items-center relative overflow-hidden group">
+            <div className="absolute top-4 left-4 px-3 py-1 bg-brand-950 text-white text-[10px] font-bold tracking-widest uppercase rounded-full z-10">
+              {t.arch}
+            </div>
+            
+            {paper.image ? (
+              <img 
+                src={paper.image} 
+                alt="System Architecture" 
+                className="max-h-[320px] object-contain rounded-lg shadow-sm group-hover:scale-[1.02] transition-transform duration-500 p-2"
+              />
+            ) : (
+              <div className="w-full flex flex-col items-center justify-center p-4">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full max-w-md">
+                  {/* Step 1 */}
+                  <div className="bg-brand-50 border border-brand-100 p-3 rounded-xl shadow-sm text-center flex-1 w-full">
+                    <i className="fas fa-file-csv text-brand-600 text-lg mb-1"></i>
+                    <p className="text-[10px] font-black text-brand-950 tracking-wider uppercase">Input Data</p>
+                    <p className="text-[8px] text-brand-500">CSV / Data Sheet</p>
+                  </div>
+                  {/* Arrow */}
+                  <div className="text-brand-300 rotate-90 md:rotate-0">
+                    <i className="fas fa-arrow-right text-sm"></i>
+                  </div>
+                  {/* Step 2 */}
+                  <div className="bg-brand-950 border border-brand-800 p-3 rounded-xl shadow-sm text-center flex-1 w-full text-white animate-pulse">
+                    <i className="fas fa-robot text-brand-400 text-lg mb-1"></i>
+                    <p className="text-[10px] font-black tracking-wider uppercase text-brand-300">SLM Agent</p>
+                    <p className="text-[8px] text-brand-400">ANOVA Planner</p>
+                  </div>
+                  {/* Arrow */}
+                  <div className="text-brand-300 rotate-90 md:rotate-0">
+                    <i className="fas fa-arrow-right text-sm"></i>
+                  </div>
+                  {/* Step 3 */}
+                  <div className="bg-brand-50 border border-brand-100 p-3 rounded-xl shadow-sm text-center flex-1 w-full">
+                    <i className="fas fa-chart-bar text-brand-600 text-lg mb-1"></i>
+                    <p className="text-[10px] font-black text-brand-950 tracking-wider uppercase">Report</p>
+                    <p className="text-[8px] text-brand-500">ANOVA Output</p>
+                  </div>
+                </div>
+                <div className="mt-6 text-[10px] font-bold text-brand-400 uppercase tracking-widest flex items-center gap-1.5">
+                  <i className="fas fa-info-circle"></i>
+                  <span>ANOVA Agent System Architecture</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Right: Abstract (Minimalist) */}
+          <div className="flex flex-col justify-between bg-white border border-brand-100 rounded-2xl p-6 min-h-[300px]">
+            <div className="flex flex-col flex-1 min-h-0">
+              <div className="inline-block px-3 py-1 bg-brand-950 text-white text-[10px] font-bold tracking-widest uppercase rounded-full mb-4 self-start">
+                {t.abstract}
+              </div>
+              <div className="overflow-y-auto max-h-[280px] lg:max-h-[340px] pr-2 custom-scrollbar">
+                <p className="text-sm font-light text-brand-600 leading-relaxed whitespace-pre-wrap break-words">
+                  {paper.abstract}
+                </p>
+              </div>
+            </div>
+
+            {/* arXiv URL */}
+            <div className="mt-6 self-end">
+              <a 
+                href={paper.arxivUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-950 hover:bg-brand-800 text-white transition-all duration-300 rounded-xl text-[10px] font-bold tracking-widest uppercase cursor-pointer shadow-sm"
+              >
+                <span>url</span>
+                <i className="fas fa-external-link-alt text-[9px]"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
+};
+

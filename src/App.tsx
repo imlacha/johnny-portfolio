@@ -11,6 +11,7 @@ import { HeroSection }     from './sections/HeroSection';
 import { AboutSection }    from './sections/AboutSection';
 import { ServicesSection } from './sections/ServicesSection';
 import { PortfolioSection } from './sections/PortfolioSection';
+import { PapersSection } from './sections/PapersSection';
 import { ContactSection }  from './sections/ContactSection';
 
 const App = () => {
@@ -74,6 +75,7 @@ const App = () => {
       <AboutSection />
       <ServicesSection />
       <PortfolioSection />
+      <PapersSection />
       <ContactSection />
 
       <footer className="py-10 bg-brand-950 border-t border-white/5 text-center text-white/20 text-[9px] tracking-widest uppercase">
