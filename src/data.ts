@@ -80,7 +80,7 @@ export const ABOUT_CONTENT = {
   en: {
     edu: {
       eyebrow: 'Education',
-      school1: { name: 'National Taiwan University of Science and Technology', dept: 'Institute of Industrial Management', period: '2023 - 2025' },
+      school1: { name: 'National Taiwan University of Science and Technology', dept: 'Department of Industrial Management', period: '2023 - 2025' },
       thesis: { label: "Master's Thesis", text: '"ANOVA Statistical Inference Framework and Exploration Based on SLM Small Language Model Agent Mechanism"' },
       school2: { name: 'Feng Chia University', dept: 'Dept. of Industrial Engineering & Systems Management', period: '2019 - 2022' },
     },
